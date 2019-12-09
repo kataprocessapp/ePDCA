@@ -1,0 +1,25 @@
+{% extends 'process/base.html' %}
+
+{% block header %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 bg-dark text-white text-center">
+        <h3 class="p-3">
+          LOGIN FAILED
+        </h3>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 bg-dark text-center">
+        <div class="jumbotron">
+          <p>Your are not logged in! Please go back to <a class="btn btn-dark text-light" href="/">Start</a> and log in!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

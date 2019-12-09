@@ -1,0 +1,89 @@
+{% load widget_tweaks %}
+
+<div class="modal fade" id="exampleModalSignUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form method="post" action="/signup">
+
+        <div class="modal-header">
+          <h3 class="modal-title">Sign up</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          {% csrf_token %}
+
+          <div class="{% if formSignUp.non_field_errors %}invalid{% endif %} mb-2">
+            {% for error in formSignUp.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+
+          {% for field in formSignUp %}
+            <div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {% render_field field class="form-control" placeholder=field.label data-toggle="tooltip" data-html="true" data-placement="right" title=field.help_text %}
+              <div class="{% if field.errors %} invalid{% endif %}">
+                {% for error in field.errors %}
+                  <p class="help-block">{{ error }}</p>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="submit-btn btn btn-primary">Sign up</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+{% load widget_tweaks %}
+
+<div class="modal fade" id="exampleModalLogIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form method="post" action="/login">
+        {% csrf_token %}
+
+        <div class="modal-header">
+          <h3 class="modal-title">LogIn</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="{% if formLogIn.non_field_errors %}invalid{% endif %} mb-2">
+            {% for error in formLogIn.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+
+          {% for field in formLogIn %}
+            <div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {% render_field field class="form-control" placeholder=field.label %}
+              <div class="{% if field.errors %} invalid{% endif %}">
+                {% for error in field.errors %}
+                  <p class="help-block">{{ error }}</p>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="submit-btn btn btn-dark">Sign up</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

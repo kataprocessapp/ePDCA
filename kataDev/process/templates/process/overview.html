@@ -1,0 +1,89 @@
+{% extends 'process/base.html' %}
+
+{% if user.is_authenticated %}
+
+  {% block header %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 bg-dark text-white text-center">
+          <h3 class="p-3">
+            Hello {{user.username}} Welcome to ePDCA
+            <small class="text-muted">organize your Teamwork</small>
+            <span><a class="btn btn-light btn-sm pull-right p-2" href="logout">logout</a></span>
+          </h3>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+
+  {% block content %}
+
+    {% include "process/modal.html" %}
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 bg-light text-dark text-center p-2">
+          <h4 class="text-center p-2">These are your current PCDAs<span><a class="btn btn-success btn-sm pull-right p-2" href="">New</a></span></h4>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  {% endblock %}
+
+  {% block extrascripts %}
+  <script type="text/javascript">
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus')
+    })
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+  {% endblock extrascripts %}
+
+{% comment %}
+  {% else %}
+
+    {% block content %}
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 bg-light text-dark text-center">
+            <h3>Please return to <a href="/">INDEX</a> and log in</h3>
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+{% endcomment %}
+
+{% endif %}

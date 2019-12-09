@@ -1,0 +1,52 @@
+{% extends 'process/base.html' %}
+
+{% block header %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 bg-dark text-white text-center">
+        <h3 class="p-3">
+          Welcome to ePDCA
+          <small class="text-muted">organize your Teamwork</small>
+        </h3>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  {% include "process/modal.html" %}
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 bg-light text-dark text-center">
+        <div class="jumbotron">
+          <h1 class="display-4">Start working Organized!</h1>
+          <p class="lead">Simply create your account or log in</p>
+          <hr class="my-4">
+          <p class="lead">
+            <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#exampleModalSignUp">
+              SignUp
+            </button>
+            <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#exampleModalLogIn">
+              LogIn
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+{% endblock extrascripts %}
